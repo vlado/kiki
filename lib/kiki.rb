@@ -1,9 +1,11 @@
-require 'kiki/core_ext'
-require 'kiki/active_record_ext'
+require 'kiki/extensions/core'
+require 'kiki/extensions/active_record'
+require 'kiki/extensions/action_controller'
+require 'kiki/extensions/resource_controller'
 
 module Kiki
   
-  @@version = "0.0.1"
+  @@version = "0.2.0"
   @@path = "#{RAILS_ROOT}/public/javascripts/kiki"
   
   class << self

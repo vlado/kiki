@@ -1,5 +1,4 @@
-module Kiki
-  module ActionControllerExt
+ActionController::Base.class_eval do
     
     private
 
@@ -9,5 +8,4 @@ module Kiki
       render :json => default_options.merge(options), :status => status
     end
     
-  end
 end
