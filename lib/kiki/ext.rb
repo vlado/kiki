@@ -1,7 +1,7 @@
 module Kiki
   module Ext
     
-    @@version = "2.2.1"
+    @@version = "3.0-rc2"
     @@path = "#{RAILS_ROOT}/public/javascripts/extjs"
     @@adapter_files_to_include = {
       :ext => ["ext-base"],

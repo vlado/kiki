@@ -36,7 +36,7 @@ namespace :kiki do
         puts "Please provide name like name=my_model"
       else
         app = args['app'] || File.basename(RAILS_ROOT)
-        create_file("#{Kiki.apps_root}/#{app}/models/#{name}.js", "Models.#{name.camelize} = function() {\n\tModels.#{name.camelize}.superclass.constructor.call(this);\n\n\tthis.columns = [];\n\n};\n#{name.camelize} = Kiki.extend.model('#{name.camelize}');", :force => force)
+        create_file("#{Kiki.apps_root}/#{app}/models/#{name}.js", "Models.#{name.camelize} = function() {\n\tModels.#{name.camelize}.superclass.constructor.call(this);\n\n\tthis.attributes = [\n\t\t'id',\n\n\t\t{ name: 'created_at', dataType: 'time' },\n\t\t{ name: 'updated_at', dataType: 'time' }\n\t];\n\n};\n#{name.camelize} = Kiki.extend.model('#{name.camelize}');", :force => force)
       end      
     end
     
