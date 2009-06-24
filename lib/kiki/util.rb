@@ -9,12 +9,12 @@ module Kiki
       end
       
       def conditions_for_search_in_columns(query, columns)
-        query = "%#{query}%" unless query.to_s.match(/(^%|%$)/)
-        conditions = ["", { :query => query }]
+        wild_query = "%#{query}%" unless query.to_s.match(/(^%|%$)/)
+        conditions = ["", { :query => query, :wild_query => wild_query }]
         if columns.to_a.empty?
           conditions = nil
         else
-          conditions[0] = columns.collect { |c| "#{c} like :query"}.join(" OR ")
+          conditions[0] = columns.collect { |c| (c == "id" ? "#{c} = :query" : "#{c} like :wild_query") }.join(" OR ")
         end
         conditions
       end
