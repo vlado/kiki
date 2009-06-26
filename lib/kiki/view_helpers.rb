@@ -66,10 +66,13 @@ module Kiki
       Kiki.ENV='#{RAILS_ENV}'
       JS
       
+      stylesheets = Dir.files_with_extension("#{app_root}/resources/stylesheets", "css").collect { |f| "#{app_web_root}/resources/stylesheets/#{f}" }
+      
       kiki = include_extjs(opts[:extjs])
       kiki << "\n"+javascript_tag(data_from_rails)
       kiki << "\n"+include_kiki(opts[:kiki])
       kiki << "\n"+javascript_include_tag(*app_files.collect { |f| "#{app_web_root}/#{f}" })
+      kiki << "\n"+stylesheet_link_tag(*stylesheets)
       kiki << "\n"+javascript_tag(data_from_kiki_plugin)
       kiki << "\n"+javascript_include_tag("#{Kiki.web_root}/init")
       kiki
